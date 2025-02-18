@@ -1,0 +1,9 @@
+from selenium import webdriver
+
+# Initialize WebDriver
+driver = webdriver.Chrome()
+
+# Open Google
+driver.get("https://www.google.com")
+
+driver.quit()

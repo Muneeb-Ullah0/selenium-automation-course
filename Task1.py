@@ -1,59 +1,21 @@
-class Square:
-    def __init__(self, side):
-        & quot; & quot; & quot;
-        creates
-        a
-        square
-        having
-        the
-        given
-        side
-        & quot; & quot; & quot;
-        self.side = side
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import time
 
-    def area(self):
-        & quot; & quot; & quot;
-        returns
-        area
-        of
-        the
-        square
-        & quot; & quot; & quot;
-        return self.side ** 2
+driver = webdriver.Chrome()
 
-    def perimeter(self):
-        & quot; & quot; & quot;
-        returns
-        perimeter
-        of
-        the
-        square
-        & quot; & quot; & quot;
-        return 4 * self.side
+# Open Google
+driver.get("https://www.google.com")
 
-    def __repr__(self):
-        & quot; & quot; & quot;
-        declares
-        how
-        a
-        Square
-        object
-        should
-        be
-        printed
-        & quot; & quot; & quot;
-        s = 'Square with side = ' + str(self.side) + '\n' + \
-            'Area = ' + str(self.area()) + '\n' + \
-            'Perimeter = ' + str(self.perimeter())
-        return s
+search_box = driver.find_element(By.NAME, "q")
+search_box.send_keys("Selenium with Python")
+search_box.send_keys(Keys.RETURN)
 
+time.sleep(3)
 
-if __name__ == '__main__':
-    # read input from the user
-    side = int(input('enter the side length to create a Square: '))
+# Print page title
+print(driver.title)
 
-    # create a square with the provided side
-    square = Square(side)
-
-    # print the created square
-    print(square)
+# Close the browser
+driver.quit()
